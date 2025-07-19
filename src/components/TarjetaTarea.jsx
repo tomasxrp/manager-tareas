@@ -1,7 +1,7 @@
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaRegEdit } from "react-icons/fa";
 
-function TarjetaTarea({ nombre, descripcion, fecha, estado, prioridad }) {
+function TarjetaTarea({ nombre, descripcion, fecha, estado, prioridad, onEliminar }) {
     
     return (
         <div className="bg-gray-800 shadow-md rounded-lg p-4 mb-4 flex justify-between items-center gap-4">
@@ -31,7 +31,10 @@ function TarjetaTarea({ nombre, descripcion, fecha, estado, prioridad }) {
                 <button className="bg-blue-600 rounded-full p-3 hover:bg-blue-700 text-white text-sm transition-colors">
                     <FaRegEdit />
                 </button>
-                <button className="bg-red-600 rounded-full p-3 hover:bg-red-700 text-white text-sm transition-colors">
+                <button 
+                    className="bg-red-600 rounded-full p-3 hover:bg-red-700 text-white text-sm transition-colors"
+                    onClick={onEliminar}
+                >
                     <FaRegTrashAlt />
                 </button>
             </div>

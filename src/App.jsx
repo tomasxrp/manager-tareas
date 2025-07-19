@@ -33,18 +33,22 @@ function App() {
     setMostrarFormulario(false);
   };
 
+  const eliminarTarea = (index) => {
+    const nuevasTareas = tareas.filter((_, i) => i !== index);
+    setTareas(nuevasTareas);
+  };
+
   return (
     <>
       <div className="min-h-screen bg-gray-950 flex flex-col"> 
         {/* Header fijo */}
         <div className="h-20 flex items-center justify-center border-b border-gray-700">
-          <h1 className="text-xl font-bold text-white">Welcome to the Todo List App</h1>
+          <h1 className="text-xl font-bold text-white">Manager Tareas</h1>
         </div>
         
         {/* Contenedor de tareas con altura fija */}
         <div className="flex-1 px-4 py-6 overflow-y-auto pb-24 relative">
           {tareas.length === 0 ? (
-            // Mensaje cuando no hay tareas - centrado absolutamente
             <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-400">
               <div className="text-6xl mb-4">📝</div>
               <h3 className="text-xl font-semibold mb-2">No hay tareas aún</h3>
@@ -61,6 +65,7 @@ function App() {
                   fecha={tarea.fecha}
                   estado={tarea.estado}
                   prioridad={tarea.prioridad}
+                  onEliminar={() => eliminarTarea(index)}
                 />
               ))}
             </div>
